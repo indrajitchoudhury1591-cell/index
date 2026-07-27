@@ -151,7 +151,7 @@
 <body>
 
     <div class="container">
-        <h1>Will you say your name?</h1>
+        <h1>Will you be mine??</h1>
         <div class="btn-container">
             <button id="yesBtn" onclick="sayYes()">Yes</button>
             <button id="noBtn" onclick="sayNo()">No</button>
