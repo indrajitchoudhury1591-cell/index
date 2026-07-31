@@ -1,263 +1,168 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Will you?</title>
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #ffe5ec, #ffc2d1);
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-        }
-
-        .container {
-            text-align: center;
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            max-width: 400px;
-            width: 90%;
-            z-index: 10;
-            position: relative;
-        }
-
-        h1 {
-            color: #ff477e;
-            margin-bottom: 30px;
-            font-size: 24px;
-        }
-
-        .btn-container {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            height: 60px;
-            position: relative;
-        }
-
-        button {
-            padding: 12px 30px;
-            font-size: 18px;
-            font-weight: bold;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        #yesBtn {
-            background-color: #ff477e;
-            color: white;
-            box-shadow: 0 5px 15px rgba(255, 71, 126, 0.4);
-            position: relative;
-        }
-
-        #yesBtn:hover {
-            transform: scale(1.1);
-            background-color: #ff0a54;
-        }
-
-        #noBtn {
-            background-color: #e2e8f0;
-            color: #64748b;
-            position: absolute;
-            left: 50%;
-            top: 0;
-            transform: translateX(60px);
-        }
-
-        .popup-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(4px);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 100;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
-        }
-
-        .popup-content {
-            background: white;
-            padding: 35px;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-            transform: scale(0.7);
-            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            max-width: 350px;
-            width: 85%;
-        }
-
-        .popup-overlay.active {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        .popup-overlay.active .popup-content {
-            transform: scale(1);
-        }
-
-        .popup-content h2 {
-            color: #ff0a54;
-            font-size: 22px;
-            margin-bottom: 15px;
-        }
-
-        .popup-content p {
-            color: #4a5568;
-            font-size: 16px;
-            line-height: 1.5;
-            margin-bottom: 20px;
-        }
-
-        .close-btn {
-            background: #ff477e;
-            color: white;
-            font-size: 14px;
-            padding: 10px 25px;
-        }
-
-        #canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 5;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Girlfriend's Day</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,500&family=Quicksand:wght@400;500;600;700&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
 </head>
 <body>
+<div class="app" id="app">
 
-    <div class="container">
-        <h1>Will you be mine?</h1>
-        <div class="btn-container">
-            <button id="yesBtn" onclick="sayYes()">Yes</button>
-            <button id="noBtn" onclick="sayNo()">No</button>
+  <!-- decorative sparkles -->
+  <div class="sparkle" style="top:6%; left:12%;">✦</div>
+  <div class="sparkle" style="top:14%; right:8%;">✦</div>
+  <div class="sparkle" style="top:40%; left:4%;">✧</div>
+
+  <!-- ================= SCREEN 0: ENVELOPE ================= -->
+  <section id="envelope-screen">
+    <div class="tag">💗 &nbsp;FOR THE GIRL I ADORE</div>
+    <div class="env-wrap">
+      <div class="env-flap"></div>
+      <div class="env-letter">
+        <span class="heart-icon">♥ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ♥</span><br>
+        <h2>happy girlfriend's day, my love</h2>
+        <div style="font-size:20px;color:var(--line);margin:6px 0;">♡</div>
+        <p class="script" style="font-size:20px;color:var(--violet-dark);margin:10px 0 4px;">a little world, made for you</p>
+        <p class="script" style="font-size:14px;color:#9c8bbd;">yours, always</p>
+      </div>
+      <div class="env-body">
+        <div class="env-heart"><span id="initial-letter">L</span></div>
+      </div>
+    </div>
+    <div class="tap-hint">TAP TO OPEN ♡</div>
+  </section>
+
+  <!-- ================= SCREEN 1: HERO ================= -->
+  <section id="hero-screen" class="hidden fade-in">
+    <div class="card center">
+      <div class="eyebrow">💗 FOR MY FAVOURITE PERSON</div>
+      <label class="avatar upload-slot">
+        <input type="file" accept="image/*" onchange="handleUpload(event,'avatar-content')">
+        <span class="slot-content" id="avatar-content">🌸</span>
+      </label>
+      <h1 class="hero-title">Happy Girlfriend's Day</h1>
+      <div class="sub-script">for you, always ♡</div>
+      <p class="body-text">Today is all about you. I built this tiny corner of the internet to say what I don't say often enough — that you make ordinary days feel like the good kind of story. Stay a while, my love.</p>
+
+      <div class="player">
+        <div class="art">🎵</div>
+        <div class="meta">
+          <div class="t">Our Song</div>
+          <div class="s">A TRACK THAT'S JUST US</div>
+          <div class="bar"><i></i></div>
         </div>
+        <button aria-label="play">▶</button>
+      </div>
+
+      <div class="thumbs">
+        <label class="upload-slot">
+          <input type="file" accept="image/*" onchange="handleUpload(event,'thumb0')">
+          <span class="slot-content" id="thumb0">🐻</span>
+        </label>
+        <label class="upload-slot">
+          <input type="file" accept="image/*" onchange="handleUpload(event,'thumb1')">
+          <span class="slot-content" id="thumb1">🐰</span>
+        </label>
+        <label class="upload-slot">
+          <input type="file" accept="image/*" onchange="handleUpload(event,'thumb2')">
+          <span class="slot-content" id="thumb2">💐</span>
+        </label>
+      </div>
+
+      <button class="btn" onclick="showScreen('moments-screen')">SEE OUR LITTLE ALBUM →</button>
+    </div>
+  </section>
+
+  <!-- ================= SCREEN 2: MOMENTS CAROUSEL ================= -->
+  <section id="moments-screen" class="hidden fade-in">
+    <div class="card center">
+      <div class="eyebrow">💗 OUR MOMENTS</div>
+      <h1 class="hero-title" style="font-size:26px;">us, in a few frames</h1>
+      <p class="body-text" style="margin-top:4px;">a handful of moments I'd relive on loop ♡</p>
+
+      <div class="carousel">
+        <div class="arrows">
+          <button onclick="moveSlide(-1)">←</button>
+          <button onclick="moveSlide(1)">→</button>
+        </div>
+        <div class="polaroid">
+          <div class="tape"></div>
+          <label class="frame upload-slot" id="slide-frame">
+            <input type="file" accept="image/*" onchange="handleSlideUpload(event)">
+            <span class="slot-content" id="slide-emoji">🌷</span>
+          </label>
+          <div class="count" id="slide-count">01 / 03</div>
+          <div class="cap" id="slide-caption">picked just for you, on an ordinary Tuesday.</div>
+        </div>
+      </div>
+
+      <div class="dots" id="slide-dots"></div>
+
+      <button class="btn" onclick="showScreen('bouquet-screen')">WHY I ADORE YOU →</button>
+    </div>
+  </section>
+
+  <!-- ================= SCREEN 3: BOUQUET / REASONS ================= -->
+  <section id="bouquet-screen" class="hidden fade-in">
+    <div class="card center">
+      <div class="eyebrow">💗 A LITTLE BOUQUET</div>
+      <h1 class="hero-title" style="font-size:26px;">a bloom for every reason I adore you</h1>
+      <p class="body-text" style="margin-top:4px;">picked just for you ♡</p>
+
+      <div class="grid">
+        <div class="cell"><span class="em">🌹</span><p>you feel like home</p></div>
+        <div class="cell"><span class="em">🌸</span><p>your laugh is my favourite sound</p></div>
+        <div class="cell"><span class="em">🌷</span><p>you make ordinary days magic</p></div>
+        <div class="cell"><span class="em">🪻</span><p>you're my calm and my spark</p></div>
+        <div class="cell"><span class="em">🌼</span><p>you make me want to be better</p></div>
+        <div class="cell"><span class="em">🌻</span><p>it's you. it's always you.</p></div>
+      </div>
+      <div class="scallop"></div>
     </div>
 
-    <div class="popup-overlay" id="customPopup">
-        <div class="popup-content">
-            <h2>Say less! 🤫</h2>
-            <p>Slide into my DMs and drop the name right now! 😉🔥</p>
-            <button class="close-btn" onclick="closePopup()">On it! 🫡</button>
-        </div>
+    <button class="btn pink" style="margin-top:26px;" onclick="showScreen('letter-screen')">READ MY LETTER →</button>
+  </section>
+
+  <!-- ================= SCREEN 4: LETTER ================= -->
+  <section id="letter-screen" class="hidden fade-in">
+    <div class="card center">
+      <div class="avatar" style="width:90px;height:90px;font-size:34px;">🐨</div>
+      <div class="eyebrow">♡ A LETTER, JUST FOR YOU ♡</div>
+      <div class="sub-script" style="font-size:28px;">My darling,</div>
+      <hr class="divider">
+      <p class="body-text" style="text-align:left;">I'm better with actions than with words, so I made you a little page instead — a song, our pictures, and a few things I mean with my whole heart.</p>
+
+      <div class="letter-doodles">
+        <label class="upload-slot">
+          <input type="file" accept="image/*" onchange="handleUpload(event,'doodle0')">
+          <span class="slot-content" id="doodle0">a basket of your favourite flowers 🌷</span>
+        </label>
+        <label class="upload-slot">
+          <input type="file" accept="image/*" onchange="handleUpload(event,'doodle1')">
+          <span class="slot-content" id="doodle1">"I love you the mostest" 💌</span>
+        </label>
+        <label class="upload-slot">
+          <input type="file" accept="image/*" onchange="handleUpload(event,'doodle2')">
+          <span class="slot-content" id="doodle2">ILYSM 🐸</span>
+        </label>
+      </div>
+
+      <p class="body-text" style="text-align:left;">Thank you for being the calm in my chaos and the spark in my ordinary. For the late-night talks, the terrible puns, and the way you always know when I need a hug before I do.</p>
+      <p class="body-text" style="text-align:left;">I hope today feels soft and warm and completely yours. I hope you feel even a fraction of how much you're adored. And I hope you always know — even on the days I forget to say it — I choose you, every single time.</p>
+
+      <hr class="divider">
+      <div class="sign-off">yours, completely,</div>
+      <div class="sign-name">— YOUR PERSON</div>
     </div>
 
-    <canvas id="canvas"></canvas>
+    <footer class="credit">WITH ALL MY LOVE · ME</footer>
+  </section>
 
-    <audio id="bgMusic" loop>
-        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-    </audio>
-
-    <script>
-        const music = document.getElementById('bgMusic');
-        const popup = document.getElementById('customPopup');
-        const noBtn = document.getElementById('noBtn');
-
-        function sayNo() {
-            music.play().catch(err => console.log("Audio waiting for user interaction: ", err));
-            moveNoButton();
-        }
-
-        function sayYes() {
-            music.pause();
-            music.currentTime = 0;
-            startConfetti();
-            popup.classList.add('active');
-        }
-
-        function moveNoButton() {
-            const btnWidth = noBtn.offsetWidth;
-            const btnHeight = noBtn.offsetHeight;
-            const maxX = window.innerWidth - btnWidth - 10;
-            const maxY = window.innerHeight - btnHeight - 10;
-
-            const x = Math.random() * maxX;
-            const y = Math.random() * maxY;
-
-            noBtn.style.position = 'fixed';
-            noBtn.style.left = `${x}px`;
-            noBtn.style.top = `${y}px`;
-            noBtn.style.transform = 'none';
-            noBtn.style.zIndex = '9999';
-        }
-
-        function closePopup() {
-            popup.classList.remove('active');
-        }
-
-        const canvas = document.getElementById('canvas');
-        const ctx = canvas.getContext('2d');
-        let confetti = [];
-
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        window.addEventListener('resize', resizeCanvas);
-        resizeCanvas();
-
-        function startConfetti() {
-            resizeCanvas();
-            confetti = [];
-            for (let i = 0; i < 150; i++) {
-                confetti.push({
-                    x: Math.random() * canvas.width,
-                    y: Math.random() * canvas.height - canvas.height,
-                    r: Math.random() * 6 + 4,
-                    d: Math.random() * canvas.height,
-                    color: `rgba(${Math.floor(Math.random()*255)}, ${Math.floor(Math.random()*100 + 155)}, ${Math.floor(Math.random()*155 + 100)}, 0.8)`,
-                    tilt: Math.random() * 10 - 5,
-                    tiltAngleIncremental: Math.random() * 0.07 + 0.02,
-                    tiltAngle: 0
-                });
-            }
-            animateConfetti();
-        }
-
-        function animateConfetti() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            confetti.forEach((p, index) => {
-                p.tiltAngle += p.tiltAngleIncremental;
-                p.y += (Math.cos(p.d) + 3 + p.r / 2) / 2;
-                p.x += Math.sin(p.tiltAngle);
-                p.tilt = Math.sin(p.tiltAngle - index / 3) * 15;
-
-                ctx.beginPath();
-                ctx.lineWidth = p.r;
-                ctx.strokeStyle = p.color;
-                ctx.moveTo(p.x + p.tilt + p.r / 2, p.y);
-                ctx.lineTo(p.x + p.tilt, p.y + p.tilt + p.r / 2);
-                ctx.stroke();
-            });
-
-            if (confetti.some(p => p.y < canvas.height)) {
-                requestAnimationFrame(animateConfetti);
-            }
-        }
-    </script>
+</div>
+<script src="script.js"></script>
 </body>
 </html>
+
